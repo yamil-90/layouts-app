@@ -1,112 +1,133 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React from 'react'
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <ScrollView>
+      <View style={{ flexDirection: 'row' }}>
+        <Image
+          style={styles.banner}
+          source={require('./assets/bg.jpg')}
+        />
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.title}>What to do in Paris</Text>
+        <ScrollView
+          horizontal
+        >
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/actividad2.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/actividad3.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/actividad4.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/actividad5.jpg')}
+            />
+          </View>
+        </ScrollView>
+        <Text style={styles.title}>Accommodations</Text>
+        <View>
+          <View>
+            <Image
+              style={styles.accomodationImage}
+              source={require('./assets/mejores1.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.accomodationImage}
+              source={require('./assets/mejores2.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.accomodationImage}
+              source={require('./assets/mejores3.jpg')}
+            />
+          </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+        <View>
+          <Text style={styles.title}>Accomodations in LA</Text>
+          <View style={styles.listing}>
+            <View style={styles.listingItem}>
+              <Image
+                style={styles.accomodationImage}
+                source={require('./assets/hospedaje1.jpg')}
+              />
+            </View>
+            <View style={styles.listingItem}>
+              <Image
+                style={styles.accomodationImage}
+                source={require('./assets/hospedaje2.jpg')}
+              />
+            </View>
+            <View style={styles.listingItem}>
+              <Image
+                style={styles.accomodationImage}
+                source={require('./assets/hospedaje3.jpg')}
+              />
+            </View>
+            <View style={styles.listingItem}>
+              <Image
+                style={styles.accomodationImage}
+                source={require('./assets/hospedaje4.jpg')}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </ScrollView>
+  )
+}
+
+export default App
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  banner: {
+    height: 250,
+    flex:1
 
-export default App;
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10
+  },
+  container: {
+    marginHorizontal: 10
+  },
+  city: {
+    width: 250,
+    height: 300,
+    marginRight: 10
+  },
+  accomodationImage: {
+    width: '100%',
+    height: 200,
+    marginVertical: 5
+  },
+  listing:{
+    flexDirection:'row',
+    flexWrap:'wrap',
+    justifyContent:'space-between'
+  },
+  listingItem:{
+    flexBasis:'49%',
+
+  }
+})
